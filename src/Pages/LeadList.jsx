@@ -169,15 +169,18 @@ const LeadList = () => {
   return (
     <div className="p-2 space-y-3">
       <h1 className="text-medium text-sm flex gap-2 items-center justify-center">
-      <span className="h-1 w-1 rounded-full bg-black"></span>
-        Scrap data from{" "}
-        <a
-          href="https://www.linkedin.com/sales/lists/people"
-          target="_blank"
-          className="text-blue-400 underline font-medium"
-        >
-          Lead List
-        </a>{" "}
+        <span className="h-1 w-1 rounded-full bg-black"></span>
+        <span>
+          Scrap data from{" "}
+          <a
+            href="https://www.linkedin.com/sales/lists/people"
+            target="_blank"
+            className="text-blue-400 underline font-medium"
+          >
+            Lead List
+          </a>{" "}
+          & select your list
+        </span>
       </h1>
       {/* {loading && (
         <p className="my-2 text-sm animate-pulse text-center">Data is Loading...</p>
