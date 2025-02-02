@@ -1,5 +1,4 @@
 import { TiUserAdd, TiContacts } from "react-icons/ti";
-// import { FaBuildingFlag } from "react-icons/fa6";
 import { useState } from "react";
 import LeadList from "./Pages/LeadList";
 import AccountList from "./Pages/AccountList";
