@@ -31,15 +31,6 @@ function App() {
           <TiUserAdd size={20} />
           <p className={`font-semibold tracking-wider`}>Accounts</p>
         </button>
-        {/* <button
-          onClick={() => setPageView("company")}
-          className={`flex items-center gap-2 py-2 px-4 hover:bg-[#014180] duration-300 ${
-            pageView == "company" ? "bg-[#014180] text-white" : "bg-[#014180] text-[#98b2c8]"
-          }`}
-        >
-          <FaBuildingFlag size={20} />
-         <p className={`font-semibold tracking-wider`}>Company</p>
-        </button> */}
       </section>
 
       <section className="mt-4">

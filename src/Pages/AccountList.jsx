@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+/* eslint-disable no-undef */
+import { useState } from "react";
 import { IoArrowDownCircleSharp, IoWarning } from "react-icons/io5";
 import Papa from "papaparse";
 
 const AccountList = () => {
-  //   const [loading, setLoading] = useState(true);
   const [csvData, setCsvData] = useState("");
   const [tableSheetCount, setTableSheetCount] = useState(0);
 
@@ -108,9 +108,6 @@ const AccountList = () => {
 
         // Save the combined data back to storage
         chrome.storage.local.set({ scrapedListData: combinedData }, () => {
-          console.log("Updated scraped data saved to storage.");
-
-          // Update state
           const csv = (() => {
             // Extract all the keys from `combinedData` and check which columns are not empty
             const nonEmptyColumns = [
@@ -135,7 +132,7 @@ const AccountList = () => {
             });
           })();
           setCsvData(csv);
-          setTableSheetCount(combinedData.length); // Update row count
+          setTableSheetCount(combinedData.length);
         });
       });
     } catch (error) {
@@ -208,14 +205,6 @@ const AccountList = () => {
         >
           Scrap This Table
         </button>
-        {/* {tableSheetCount > 0 && (
-          <button
-            onClick={unperseData}
-            className="py-2 px-4 bg-sky-600 rounded-lg cursor-pointer text-white mt-3"
-          >
-            Convert to CSV
-          </button>
-        )} */}
         <p className="my-2 text-blue-700">Total Rows: {tableSheetCount}</p>
 
         {csvData && (

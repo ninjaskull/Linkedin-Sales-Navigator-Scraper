@@ -1,4 +1,4 @@
-# Linkedin Sales Navigator Scraper
+# Linkedin Sales Navigator Data Scraper Chrome Extension
 
 This project is a Chrome extension designed to scrape data from LinkedIn's Sales Navigator. It extracts relevant information such as names, profile URLs, industries, employee counts, and more, and allows users to download the data in CSV format. The extension is built using React and leverages Chrome's scripting and storage APIs for data extraction and management.
 
@@ -9,6 +9,10 @@ This project is a Chrome extension designed to scrape data from LinkedIn's Sales
 - **CSV Export**: Convert scraped data into CSV format for easy analysis and storage.
 - **Chrome Storage Integration**: Save scraped data locally within the Chrome browser for later retrieval.
 - **User-Friendly Interface**: Simple and intuitive UI for easy navigation and operation.
+
+## Quick Start and Use
+
+1. 
 
 ## Installation
 

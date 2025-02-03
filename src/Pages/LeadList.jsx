@@ -1,7 +1,7 @@
+/* eslint-disable no-undef */
 import { useState } from "react";
 import Papa from "papaparse";
 const LeadList = () => {
-  const [loading, setLoading] = useState(true);
   const [csvData, setCsvData] = useState("");
   const [tableSheetCount, setTableSheetCount] = useState(0);
 
@@ -18,22 +18,20 @@ const LeadList = () => {
           const tableElement = document.querySelector("table");
           if (tableElement) {
             return {
-              tableHTML: tableElement.outerHTML, // Return the table as HTML
+              tableHTML: tableElement.outerHTML,
             };
           }
-          return { tableHTML: "No table found" }; // Fallback if no table is present
+          return { tableHTML: "No table found" };
         },
       });
 
       const data = response[0].result;
-      setLoading(false);
 
       if (data.tableHTML !== "No table found") {
-        convertTableToCsv(data.tableHTML); // Convert to CSV after fetching
+        convertTableToCsv(data.tableHTML);
       }
     } catch (error) {
       console.error("Error fetching data", error);
-      setLoading(false);
     }
   };
 
@@ -46,7 +44,6 @@ const LeadList = () => {
       const headers = Array.from(table.querySelectorAll("thead th"));
       const rows = Array.from(table.querySelectorAll("tbody tr"));
 
-      // Extract headers and find the dynamic index of "Outreach Activity"
       const headerArray = headers.map((header) => header.textContent.trim());
 
       // Insert "Designation" header after "Name"
@@ -59,17 +56,14 @@ const LeadList = () => {
       const dataArray = rows.map((row) => {
         const cells = Array.from(row.querySelectorAll("td"));
 
-        // Find the name in the first cell
         const nameCell = cells[0]?.querySelector("a span");
         const name = nameCell ? nameCell.textContent.trim() : "Name not found";
 
-        // Extract the profile link
         const profileLinkElement = cells[0]?.querySelector("a");
         const profileLink = profileLinkElement
           ? profileLinkElement.getAttribute("href")
           : "Link not found";
 
-        // Extract the Designation
         const designationCell = cells[0]?.querySelector(
           "div[data-anonymize='job-title']"
         );
@@ -77,7 +71,6 @@ const LeadList = () => {
           ? designationCell.textContent.trim()
           : "Designation not found";
 
-        // Find the outreach activity dynamically
         const outreachActivityCell = cells[
           outreachActivityIndex - 2
         ]?.querySelector("button span.lists-table__outreach-activity-text");
@@ -85,7 +78,6 @@ const LeadList = () => {
           ? outreachActivityCell.textContent.trim()
           : "Outreach Activity Not Found";
 
-        // Map the rest of the row
         const rowData = cells.map((cell, index) => {
           // Replace dynamic columns with extracted data
           if (index === 0) return name;
@@ -93,21 +85,18 @@ const LeadList = () => {
           return cell.textContent.trim();
         });
 
-        // Insert "Profile URL" and "Designation" columns after the Name
         rowData.splice(1, 0, `https://www.linkedin.com${profileLink}`);
         rowData.splice(2, 0, designation);
 
         return rowData;
       });
 
-      // Retrieve existing data from storage
       const previousData = await new Promise((resolve) => {
         chrome.storage.local.get(["scrapedData"], (result) => {
           resolve(result.scrapedData || []);
         });
       });
 
-      // Add the header if not already included in the storage
       const isHeaderIncluded =
         previousData.length > 0 &&
         previousData[0].every((header, index) => header === headerArray[index]);
@@ -118,7 +107,6 @@ const LeadList = () => {
 
       chrome.storage.local.set({ scrapedData: combinedData });
 
-      // Update table sheet count
       setTableSheetCount(combinedData.length - 1);
     } catch (error) {
       console.error("Error converting table to CSV", error);
@@ -126,7 +114,6 @@ const LeadList = () => {
   };
 
   const unperseData = async () => {
-    // Retrieve all data from storage
     const data = await new Promise((resolve) => {
       chrome.storage.local.get(["scrapedData"], (result) => {
         resolve(result.scrapedData || []);
@@ -162,7 +149,6 @@ const LeadList = () => {
     chrome.storage.local.remove("scrapedData", () => {
       setCsvData("");
       setTableSheetCount(0);
-      console.log("Scraped data cleared.");
     });
   };
 
@@ -182,9 +168,6 @@ const LeadList = () => {
           & select your list
         </span>
       </h1>
-      {/* {loading && (
-        <p className="my-2 text-sm animate-pulse text-center">Data is Loading...</p>
-      )} */}
       <div className="text-center">
         <button
           onClick={fetchLeadData}
