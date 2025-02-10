@@ -14,7 +14,7 @@ This project is a Chrome extension designed to scrape data from LinkedIn's Sales
 
 Watch the video below to see how the extension works:
 
-[![Watch the Demo](https://img.youtube.com/vi/8tT5RfgM_NE/0.jpg)](https://www.youtube.com/watch?v=8tT5RfgM_NE)
+[![Watch the Demo](https://img.youtube.com/vi/8kI341lmyok/0.jpg)](https://youtu.be/8kI341lmyok)
 
 ## Installation Guide
 
@@ -32,6 +32,7 @@ Watch the video below to see how the extension works:
    - Click **Load unpacked** and select the `dist` folder from the unzipped project.
    <br>
    <img width="480" height="300" alt="load likedin data scrapper extension" src="./public/images/upload_extension.png" />
+   <br>
    - The extension is now ready to use!
    <br>
    <img width="450" height="220" alt="likedin sales navigator data scrapper extension" src="./public/images/linkedin_sales_navigator_scrapper.png" />
