@@ -42,6 +42,15 @@ function App() {
           ""
         )}
       </section>
+
+      <footer>
+        <a
+          href="https://qtecsolution.com/"
+          className="w-full block text-center text-sm text-gray-500 px-1 pb-2"
+        >
+          © Developed by <span className="text-blue-400 font-medium">Qtec Solution</span> LTD All rights reserved.
+        </a>
+      </footer>
     </div>
   );
 }
