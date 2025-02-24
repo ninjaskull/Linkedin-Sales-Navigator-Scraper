@@ -5,7 +5,8 @@
   "permissions": ["webRequest", "activeTab", "scripting", "storage"],
   "host_permissions": ["https://www.linkedin.com/sales/lists/people"],
   "action": {
-    "default_popup": "index.html"
+    "default_popup": "index.html",
+    "default_icon": "./images/linkedin_scrapper.png"
   },
   "background": {
     "service_worker": "./background.js"
